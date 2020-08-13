@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, FlatList } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { ListItem, Card } from 'react-native-elements';
 import { DISHES } from '../shared/dishes';
 
 
@@ -26,17 +26,19 @@ class Menu extends Component {
                     hideChevron={true}
                     onPress={() => navigate('Dishdetails', { dishId: item.id})}
                     leftAvatar={{ source: require('./images/uthappizza.png') }}
-                    />
+                />
             )
         }
 
         
         return (
-            <FlatList
+            <Card title='Our Menu'>
+                <FlatList
                 data={this.state.dishes}
                 renderItem={renderMenuItem}
                 keyExtractor={item => item.id.toString()}
-                />
+            />
+            </Card>
         )
     }
     
